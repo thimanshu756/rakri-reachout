@@ -1,0 +1,140 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-heading: var(--font-manrope);
+}
+
+/* ===== Glass Card ===== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.dark .glass-card {
+  background: rgba(15, 25, 48, 0.6);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid rgba(64, 72, 93, 0.2);
+}
+
+/* ===== Gradient Text ===== */
+.text-gradient {
+  background: linear-gradient(135deg, color-mix(in srgb, var(--niche-primary), black 30%), color-mix(in srgb, var(--niche-secondary), black 30%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.dark .text-gradient {
+  background: linear-gradient(135deg, var(--niche-primary), var(--niche-secondary));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===== Button Glow ===== */
+.btn-glow:hover {
+  box-shadow: 0 0 24px var(--niche-glow);
+}
+
+/* ===== Hero Grid Pattern ===== */
+.hero-grid {
+  background-image: radial-gradient(circle at 2px 2px, var(--niche-dot, rgba(59,191,250,0.05)) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+/* ===== Circuit Pattern (Electrician) ===== */
+.circuit-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M10 10 H90 V90 H10 Z M20 20 H80 V80 H20 Z M30 30 H70 V70 H30 Z' fill='none' stroke='%23ffd165' stroke-width='0.5' stroke-opacity='0.05'/%3E%3Ccircle cx='10' cy='10' r='1' fill='%23ffd165' fill-opacity='0.1'/%3E%3Ccircle cx='90' cy='90' r='1' fill='%23ffd165' fill-opacity='0.1'/%3E%3C/svg%3E");
+}
+
+/* ===== Neon Glow (Electrician) ===== */
+.neon-glow {
+  box-shadow: 0 0 20px rgba(234, 179, 8, 0.3);
+}
+
+.neon-glow-lg {
+  box-shadow: 0 0 40px rgba(234, 179, 8, 0.5);
+}
+
+/* ===== Pulse Line (Electrician safety) ===== */
+.pulse-line::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--niche-primary);
+  box-shadow: 0 0 10px var(--niche-primary);
+}
+
+/* ===== Animations ===== */
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(1rem); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.8; }
+}
+
+.animate-slide-up { animation: slide-up 0.5s ease-out; }
+.animate-fade-in { animation: fade-in 0.6s ease-out; }
+.animate-pulse-glow { animation: pulse-glow 3s ease-in-out infinite; }
+
+/* ===== Material Symbols ===== */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== Light Mode Overrides ===== */
+:root {
+  --niche-primary: #3bbffa;
+  --niche-secondary: #3adffa;
+  --niche-glow: rgba(59, 191, 250, 0.4);
+  --niche-dot: rgba(59, 191, 250, 0.05);
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(100, 100, 100, 0.3); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(100, 100, 100, 0.5); }
+
+/* ===== Typography ===== */
+body {
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+h1, h2, h3, h4 {
+  font-family: var(--font-heading), var(--font-sans), system-ui, sans-serif;
+}
+
+/* ===== Selection ===== */
+::selection {
+  background: var(--niche-primary);
+  color: white;
+  opacity: 0.3;
+}
