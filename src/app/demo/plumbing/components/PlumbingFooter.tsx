@@ -9,7 +9,7 @@ const instagramImages = [
   "https://lh3.googleusercontent.com/aida-public/AB6AXuCvoF0As-t2aUfneATLqqhI9whRAVfg-wl1jv4vYIp2fLaQXVfynTqzY-lIEORcc81TgUe0VMkuHuWg4E0stKU9YrQBxg1DdHnRGghOSKfu21p8LrKSdgMD1tiza-ZHc-MjX4qQjmbU4R6g-nRnd6eyzgARZSlA7ovkcNT-QUSQI5VIaeSrEpuJAxSodhQ-jx77ViwzWXyt1BiHy6Yb7vDoEduy_rKMhWWOgVsATKXKxwbGhDt3bKvMMm8UVpTRnpAtJBXt2unrSpQ",
 ];
 
-export default function PlumbingFooter() {
+export default function PlumbingFooter({ businessName = "Plumbing Excellence", phone = "(555) 123-4567", city = "Kensington, NY" }: { businessName?: string; phone?: string; city?: string }) {
   return (
     <footer className="bg-[#011545] text-[#FEF9F1] w-full py-16 px-8 leading-[1.65] text-sm">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto">
@@ -72,7 +72,7 @@ export default function PlumbingFooter() {
               <span className="material-symbols-outlined text-[#7E5700]">
                 location_on
               </span>
-              123 Artisan Way, Kensington, NY
+              {city}
             </li>
             <li className="flex gap-3">
               <span className="material-symbols-outlined text-[#7E5700]">
@@ -84,7 +84,7 @@ export default function PlumbingFooter() {
               <span className="material-symbols-outlined text-[#7E5700]">
                 call
               </span>
-              (555) 123-4567
+              {phone}
             </li>
           </ul>
         </div>
@@ -121,7 +121,7 @@ export default function PlumbingFooter() {
             className="text-xl font-bold text-[#7E5700] uppercase"
             style={{ fontFamily: "var(--font-manrope)" }}
           >
-            Plumbing Excellence
+            {businessName}
           </span>
           <p className="text-slate-400">
             &copy; {new Date().getFullYear()} Premium Residential Plumbing. All

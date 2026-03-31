@@ -8,6 +8,7 @@ interface Props {
   onStageChange: (leadId: string, stage: LeadStage) => void;
   onSendEmail: (leadId: string, type: string) => Promise<boolean>;
   onMarkWaSent: (leadId: string) => void;
+  onMarkFbSent: (leadId: string) => void;
   onSaveNotes: (leadId: string, notes: string) => void;
   onDelete: (leadId: string) => void;
 }
@@ -17,6 +18,7 @@ export default function LeadsTable({
   onStageChange,
   onSendEmail,
   onMarkWaSent,
+  onMarkFbSent,
   onSaveNotes,
   onDelete,
 }: Props) {
@@ -49,6 +51,7 @@ export default function LeadsTable({
           onStageChange={onStageChange}
           onSendEmail={onSendEmail}
           onMarkWaSent={onMarkWaSent}
+          onMarkFbSent={onMarkFbSent}
           onSaveNotes={onSaveNotes}
           onDelete={onDelete}
         />

@@ -1,6 +1,6 @@
 "use client";
 
-export default function PlumbingContactFooter() {
+export default function PlumbingContactFooter({ businessName = "Royal Plumb & Brass", phone = "(800) 555-ROYAL", city = "Royal Oak, MI" }: { businessName?: string; phone?: string; city?: string }) {
   return (
     <footer className="bg-[#011545] text-[#FEF9F1] w-full pt-20 pb-10">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-12 px-8 max-w-7xl mx-auto mb-16">
@@ -10,7 +10,7 @@ export default function PlumbingContactFooter() {
             className="text-2xl font-black text-[#FEF9F1] mb-6"
             style={{ fontFamily: "var(--font-manrope)" }}
           >
-            Royal Plumb &amp; Brass
+            {businessName}
           </div>
           <p
             className="text-[#FEF9F1]/80 leading-[1.65] text-base mb-6"
@@ -71,13 +71,13 @@ export default function PlumbingContactFooter() {
               <span className="material-symbols-outlined text-[#7E5700]">
                 location_on
               </span>
-              482 Heritage Way, Royal Oak, MI
+              {city}
             </li>
             <li className="flex gap-3 text-[#FEF9F1]/80">
               <span className="material-symbols-outlined text-[#7E5700]">
                 call
               </span>
-              (800) 555-ROYAL
+              {phone}
             </li>
             <li className="flex gap-3 text-[#FEF9F1]/80">
               <span className="material-symbols-outlined text-[#7E5700]">
@@ -95,7 +95,7 @@ export default function PlumbingContactFooter() {
           className="text-[#FEF9F1]/50 text-xs tracking-widest uppercase"
           style={{ fontFamily: "var(--font-inter)" }}
         >
-          &copy; {new Date().getFullYear()} Royal Plumb &amp; Brass. All rights
+          &copy; {new Date().getFullYear()} {businessName}. All rights
           reserved.
         </p>
       </div>

@@ -1,5 +1,13 @@
 export type Niche = "plumber" | "hvac" | "roofer" | "electrician" | "pest_control";
 
+export interface LeadProps {
+  businessName?: string;
+  phone?: string;
+  city?: string;
+  rating?: number;
+  reviewCount?: number;
+}
+
 export type LeadStage =
   | "new"
   | "outreach_ready"
@@ -31,6 +39,9 @@ export interface Lead {
   reviewCount: number;
   mapsUrl: string | null;
   demoUrl: string | null;
+  fbUrl: string | null;
+  fbFollowers: number | null;
+  fbMessage: string | null;
   emailSubject: string | null;
   emailBody: string | null;
   waMessage: string | null;

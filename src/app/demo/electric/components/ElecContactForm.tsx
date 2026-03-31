@@ -1,6 +1,6 @@
 "use client";
 
-export default function ElecContactForm() {
+export default function ElecContactForm({ phone = "(800) 555-8658", city = "Austin, TX 78701" }: { phone?: string; city?: string }) {
   return (
     <section className="py-24 px-6 max-w-7xl mx-auto">
       <div className="grid grid-cols-1 lg:grid-cols-10 gap-12">
@@ -60,9 +60,9 @@ export default function ElecContactForm() {
         {/* Info Cards */}
         <div className="lg:col-span-4 flex flex-col gap-6">
           {[
-            { header: "Phone", icon: "call", content: <><p className="text-2xl font-bold text-[#151c27]" style={{ fontFamily: "var(--font-mono-elec)" }}>(800) 555-8658</p><p className="text-xs text-[#515f74] mt-1">Direct access to master technicians.</p></> },
+            { header: "Phone", icon: "call", content: <><p className="text-2xl font-bold text-[#151c27]" style={{ fontFamily: "var(--font-mono-elec)" }}>{phone}</p><p className="text-xs text-[#515f74] mt-1">Direct access to master technicians.</p></> },
             { header: "Email", icon: "mail", content: <><p className="text-xl font-bold text-[#151c27]" style={{ fontFamily: "var(--font-mono-elec)" }}>dispatch@powerline.pro</p><p className="text-xs text-[#515f74] mt-1">Response within 60 minutes.</p></> },
-            { header: "Headquarters", icon: "location_on", content: <><p className="font-bold text-[#151c27]">1200 Industrial Circuit Blvd</p><p className="text-sm text-[#515f74]">Suite 405, Austin, TX 78701</p></> },
+            { header: "Headquarters", icon: "location_on", content: <><p className="font-bold text-[#151c27]">{city}</p></> },
             { header: "Operational Hours", icon: "schedule", content: <div className="flex flex-col gap-2" style={{ fontFamily: "var(--font-mono-elec)" }}><div className="flex justify-between text-sm"><span className="text-[#515f74]">MON-FRI</span><span className="font-bold">07:00 - 19:00</span></div><div className="flex justify-between text-sm"><span className="text-[#515f74]">SAT-SUN</span><span className="font-bold text-[#eab308]">EMERGENCY ONLY</span></div></div> },
           ].map((card) => (
             <div key={card.header} className="bg-white rounded-lg shadow-sm border border-[#e7eefe] overflow-hidden">

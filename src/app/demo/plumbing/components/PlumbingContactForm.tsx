@@ -1,6 +1,6 @@
 "use client";
 
-export default function PlumbingContactForm() {
+export default function PlumbingContactForm({ phone = "(800) 555-ROYAL", city = "Royal Oak, MI 48067" }: { phone?: string; city?: string }) {
   return (
     <section className="py-20 px-8 max-w-7xl mx-auto">
       <div className="flex flex-col lg:flex-row gap-12">
@@ -131,7 +131,7 @@ export default function PlumbingContactForm() {
             {
               icon: "phone_iphone",
               title: "Phone",
-              line1: "(800) 555-ROYAL",
+              line1: phone,
               line2: "24/7 Emergency Dispatch",
             },
             {
@@ -143,8 +143,8 @@ export default function PlumbingContactForm() {
             {
               icon: "location_on",
               title: "Main Office",
-              line1: "482 Heritage Way",
-              line2: "Royal Oak, MI 48067",
+              line1: city,
+              line2: "",
             },
             {
               icon: "schedule",

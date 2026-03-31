@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function RoofNav() {
+export default function RoofNav({ businessName = "StrongRoof Co.", phone = "(555) 010-9988" }: { businessName?: string; phone?: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const links = [
@@ -37,7 +37,7 @@ export default function RoofNav() {
             className="text-xl font-black uppercase tracking-tighter text-[#1b1c1a]"
             style={{ fontFamily: "var(--font-epilogue)" }}
           >
-            StrongRoof Co.
+            {businessName}
           </div>
           <div className="hidden md:flex items-center gap-8">
             {links.map((link) => (
@@ -56,7 +56,7 @@ export default function RoofNav() {
               className="hidden lg:block font-bold text-[#151c27] hover:text-[#9e2016] transition-colors"
               href="tel:5550109988"
             >
-              (555) 010-9988
+              {phone}
             </a>
             <button
               className="bg-[#9e2016] hover:bg-[#c0392b] text-white px-6 py-2.5 text-xs tracking-widest uppercase transition-all active:scale-95 relative"

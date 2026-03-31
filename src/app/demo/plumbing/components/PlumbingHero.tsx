@@ -1,6 +1,6 @@
 "use client";
 
-export default function PlumbingHero() {
+export default function PlumbingHero({ phone = "(555) 123-4567", rating = 4.9, reviewCount = 2400 }: { phone?: string; rating?: number; reviewCount?: number }) {
   return (
     <>
       {/* HERO SECTION */}
@@ -42,7 +42,7 @@ export default function PlumbingHero() {
                 className="border-2 border-[#011545] text-[#011545] px-8 py-4 rounded-lg font-bold text-sm transition-transform hover:scale-[1.02]"
                 style={{ fontFamily: "var(--font-manrope)" }}
               >
-                Call (555) 123-4567
+                Call {phone}
               </button>
             </div>
             <div className="flex flex-col gap-3 pt-4">
@@ -94,13 +94,13 @@ export default function PlumbingHero() {
                   className="text-[#011545] font-bold"
                   style={{ fontFamily: "var(--font-manrope)" }}
                 >
-                  4.9/5 Rating
+                  {rating}/5 Rating
                 </p>
                 <p
                   className="text-xs text-[#757680]"
                   style={{ fontFamily: "var(--font-inter)" }}
                 >
-                  Based on 2,400+ reviews
+                  Based on {reviewCount.toLocaleString()}+ reviews
                 </p>
               </div>
             </div>

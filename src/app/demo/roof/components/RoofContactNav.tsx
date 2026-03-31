@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function RoofContactNav() {
+export default function RoofContactNav({ businessName = "STRONGROOF CO." }: { businessName?: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const links = [
@@ -19,7 +19,7 @@ export default function RoofContactNav() {
           className="text-xl font-black uppercase tracking-tighter text-[#1b1c1a]"
           style={{ fontFamily: "var(--font-epilogue)" }}
         >
-          STRONGROOF CO.
+          {businessName}
         </div>
         <nav className="hidden md:flex gap-8 items-center">
           {links.map((link) => (

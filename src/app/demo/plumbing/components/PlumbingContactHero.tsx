@@ -1,6 +1,6 @@
 "use client";
 
-export default function PlumbingContactHero() {
+export default function PlumbingContactHero({ phone = "(800) 555-ROYAL" }: { phone?: string }) {
   return (
     <section className="relative pt-40 pb-20 px-8 overflow-hidden">
       <div className="absolute inset-0 bg-gradient-to-b from-[#7E5700]/5 via-transparent to-transparent opacity-50" />
@@ -51,7 +51,7 @@ export default function PlumbingContactHero() {
                 className="text-white font-extrabold text-2xl tracking-tighter"
                 style={{ fontFamily: "var(--font-manrope)" }}
               >
-                (800) 555-ROYAL
+                {phone}
               </p>
             </div>
           </div>

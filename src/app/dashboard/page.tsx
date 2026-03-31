@@ -201,6 +201,7 @@ export default function DashboardPage() {
             onStageChange={handleStageChange}
             onSendEmail={handleSendEmail}
             onMarkWaSent={handleMarkWaSent}
+            onMarkFbSent={handleMarkWaSent}
             onSaveNotes={handleSaveNotes}
             onDelete={handleDelete}
           />

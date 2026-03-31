@@ -1,5 +1,5 @@
 "use client";
-export default function PestContactForm() {
+export default function PestContactForm({ phone = "(800) GREEN-01", city = "Portland, OR 97201" }: { phone?: string; city?: string }) {
   return (
     <section className="px-6 py-12 md:py-20 bg-[#eaf7ee]/50">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-10 gap-12">
@@ -47,9 +47,9 @@ export default function PestContactForm() {
         {/* Info Cards */}
         <div className="lg:col-span-4 space-y-6">
           {[
-            { icon: "call", label: "Call us", val: "(800) GREEN-01", sub: "Mon - Fri, 8am - 6pm" },
+            { icon: "call", label: "Call us", val: phone, sub: "Mon - Fri, 8am - 6pm" },
             { icon: "mail", label: "Email us", val: "hello@greenshield.com", sub: "Response within 2 hours" },
-            { icon: "location_on", label: "Visit Laboratory", val: "1200 Botanical Drive", sub: "Portland, OR 97201" },
+            { icon: "location_on", label: "Visit Laboratory", val: city, sub: "" },
           ].map((c) => (
             <div key={c.label} className="bg-white p-6 rounded-2xl shadow-sm border border-[#bccbb9]/10 flex items-start gap-4 hover:bg-[#eaf7ee] transition-colors">
               <div className="w-12 h-12 rounded-full bg-[#b4f0c9]/40 flex items-center justify-center flex-shrink-0">

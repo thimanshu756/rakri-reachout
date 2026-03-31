@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function ElecContactNav() {
+export default function ElecContactNav({ businessName = "PowerLine Electric", phone = "(800) 555-VOLT" }: { businessName?: string; phone?: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const links = [
     { label: "Services", href: "#" },
@@ -16,7 +16,7 @@ export default function ElecContactNav() {
     <nav className="fixed top-0 w-full z-50 flex justify-between items-center px-6 h-16 bg-white border-b-2 border-[#eab308]">
       <div className="flex items-center gap-2">
         <span className="material-symbols-outlined text-[#eab308]" style={{ fontVariationSettings: "'FILL' 1" }}>bolt</span>
-        <span className="text-xl font-black text-[#151c27] uppercase tracking-tighter" style={{ fontFamily: "var(--font-inter-elec)" }}>PowerLine Electric</span>
+        <span className="text-xl font-black text-[#151c27] uppercase tracking-tighter" style={{ fontFamily: "var(--font-inter-elec)" }}>{businessName}</span>
       </div>
       <div className="hidden md:flex items-center gap-8">
         {links.map((l) => (
@@ -36,7 +36,7 @@ export default function ElecContactNav() {
       <div className="flex items-center gap-4">
         <div className="hidden lg:flex items-center gap-2 text-sm font-bold text-[#151c27]" style={{ fontFamily: "var(--font-mono-elec)" }}>
           <span className="material-symbols-outlined text-[#eab308] text-lg">bolt</span>
-          <span>(800) 555-VOLT</span>
+          <span>{phone}</span>
         </div>
         <button className="bg-[#151c27] text-[#eab308] px-4 py-2 text-xs font-black uppercase tracking-tight hover:opacity-90 transition-all">
           GET QUOTE

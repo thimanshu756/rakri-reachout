@@ -1,6 +1,6 @@
 "use client";
 
-export default function RoofFooter() {
+export default function RoofFooter({ businessName = "StrongRoof Co.", city = "Dallas, TX" }: { businessName?: string; city?: string }) {
   return (
     <footer className="bg-[#151c27] text-white pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-6">
@@ -10,7 +10,7 @@ export default function RoofFooter() {
               className="text-2xl font-black uppercase tracking-tighter mb-6"
               style={{ fontFamily: "var(--font-epilogue)" }}
             >
-              StrongRoof Co.
+              {businessName}
             </h3>
             <p className="text-slate-400 text-sm leading-relaxed">
               The premier choice for residential and commercial roofing solutions
@@ -81,7 +81,7 @@ export default function RoofFooter() {
         </div>
         <div className="pt-10 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-slate-500 text-xs">
-            &copy; {new Date().getFullYear()} StrongRoof Co. Built for
+            &copy; {new Date().getFullYear()} {businessName}. Built for
             Permanence.
           </p>
           <div className="flex gap-8 text-slate-500 text-xs">

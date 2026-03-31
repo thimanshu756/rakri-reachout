@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function ElecNav() {
+export default function ElecNav({ businessName = "PowerLine Electric", phone = "(555) 012-3456" }: { businessName?: string; phone?: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
   const links = [
     { label: "Services", href: "#services" },
@@ -19,7 +19,7 @@ export default function ElecNav() {
             className="text-xl font-black tracking-tighter text-slate-900 uppercase"
             style={{ fontFamily: "var(--font-inter-elec)" }}
           >
-            <span className="text-[#eab308]">P</span>owerLine Electric
+            {businessName}
           </span>
         </div>
         <div className="hidden md:flex gap-8 items-center">
@@ -43,7 +43,7 @@ export default function ElecNav() {
               24/7 Service
             </span>
             <span className="text-sm font-bold text-[#151c27]">
-              Emergency: (555) 012-3456
+              Emergency: {phone}
             </span>
           </div>
           <button

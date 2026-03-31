@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-export default function PestContactNav() {
+export default function PestContactNav({ businessName = "GreenShield Pest" }: { businessName?: string }) {
   const [open, setOpen] = useState(false);
   const links = [
     { label: "Solutions", href: "#" },
@@ -13,7 +13,7 @@ export default function PestContactNav() {
       <div className="flex justify-between items-center px-8 py-4 max-w-7xl mx-auto">
         <div className="text-xl font-extrabold text-emerald-900 flex items-center gap-2" style={{ fontFamily: "var(--font-jakarta)" }}>
           <span className="material-symbols-outlined text-[#006e2f] text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>eco</span>
-          GreenShield Pest
+          {businessName}
         </div>
         <div className="hidden md:flex gap-8 items-center font-semibold text-sm tracking-tight" style={{ fontFamily: "var(--font-jakarta)" }}>
           {links.map((l) => (

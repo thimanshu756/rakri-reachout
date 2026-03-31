@@ -1,6 +1,6 @@
 "use client";
 
-export default function ElecCTA() {
+export default function ElecCTA({ phone = "(555) 012-3456" }: { phone?: string }) {
   return (
     <section
       className="py-24 bg-[#151c27] text-white relative"
@@ -30,7 +30,7 @@ export default function ElecCTA() {
             className="bg-[#eab308] text-[#604700] px-10 py-5 text-lg font-black uppercase tracking-widest hover:scale-105 transition-transform"
             href="tel:5550123456"
           >
-            (555) 012-3456
+            {phone}
           </a>
           <button className="border-2 border-white text-white px-10 py-5 text-lg font-black uppercase tracking-widest hover:bg-white hover:text-[#151c27] transition-all">
             Request Priority Dispatch

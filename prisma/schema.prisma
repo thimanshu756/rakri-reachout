@@ -24,6 +24,11 @@ model Lead {
   mapsUrl      String?
   demoUrl      String?
 
+  // Facebook data
+  fbUrl        String?
+  fbFollowers  Int?
+  fbMessage    String?   // pre-written FB message
+
   // Outreach content (filled by Claude Code)
   emailSubject String?
   emailBody    String?

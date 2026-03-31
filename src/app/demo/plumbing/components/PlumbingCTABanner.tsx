@@ -1,6 +1,6 @@
 "use client";
 
-export default function PlumbingCTABanner() {
+export default function PlumbingCTABanner({ phone = "(555) 123-4567" }: { phone?: string }) {
   return (
     <section className="py-24 bg-[#F5F0E8] px-8" id="emergency">
       <div
@@ -27,7 +27,7 @@ export default function PlumbingCTABanner() {
               >
                 call
               </span>
-              (555) 123-4567
+              {phone}
             </button>
             <button
               className="border-2 border-[#011545] text-[#011545] px-10 py-5 rounded-full font-extrabold text-lg hover:scale-105 transition-transform"

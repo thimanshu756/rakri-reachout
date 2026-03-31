@@ -1,12 +1,12 @@
 "use client";
 
-export default function ElecFooter() {
+export default function ElecFooter({ businessName = "PowerLine", phone = "(555) 012-3456", city = "Suite 400" }: { businessName?: string; phone?: string; city?: string }) {
   return (
     <footer className="bg-slate-900 w-full pt-16 pb-8 border-t-4 border-yellow-500">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 px-8 max-w-7xl mx-auto">
         <div className="space-y-6">
           <span className="text-2xl font-black text-white tracking-tighter uppercase">
-            PowerLine
+            {businessName}
           </span>
           <p className="text-slate-400 text-sm leading-relaxed">
             Engineering excellence in every connection. Licensed master
@@ -40,7 +40,7 @@ export default function ElecFooter() {
               <span className="material-symbols-outlined text-xs">mail</span> office@powerline-elec.com
             </li>
             <li className="text-slate-400 flex items-center gap-2">
-              <span className="material-symbols-outlined text-xs">phone</span> (555) 012-3456
+              <span className="material-symbols-outlined text-xs">phone</span> {phone}
             </li>
           </ul>
         </div>
@@ -57,7 +57,7 @@ export default function ElecFooter() {
       </div>
       <div className="mt-16 pt-8 border-t border-slate-800 max-w-7xl mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-slate-400 text-xs">
-          &copy; {new Date().getFullYear()} PowerLine Electric. Master License #88291-B. All Rights Reserved.
+          &copy; {new Date().getFullYear()} {businessName}. Master Licensed. All Rights Reserved.
         </p>
         <div className="flex gap-6">
           <a href="#" className="text-slate-400 hover:text-yellow-500 transition-colors text-xs">Privacy Policy</a>

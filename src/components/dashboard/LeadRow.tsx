@@ -7,23 +7,26 @@ import EmailPanel from "./EmailPanel";
 import WhatsAppPanel from "./WhatsAppPanel";
 import FollowUpPanel from "./FollowUpPanel";
 import NotesEditor from "./NotesEditor";
+import FacebookPanel from "./FacebookPanel";
 
 interface Props {
   lead: Lead;
   onStageChange: (leadId: string, stage: LeadStage) => void;
   onSendEmail: (leadId: string, type: string) => Promise<boolean>;
   onMarkWaSent: (leadId: string) => void;
+  onMarkFbSent: (leadId: string) => void;
   onSaveNotes: (leadId: string, notes: string) => void;
   onDelete: (leadId: string) => void;
 }
 
-type Tab = "email" | "whatsapp" | "followups" | "notes";
+type Tab = "email" | "whatsapp" | "facebook" | "followups" | "notes";
 
 export default function LeadRow({
   lead,
   onStageChange,
   onSendEmail,
   onMarkWaSent,
+  onMarkFbSent,
   onSaveNotes,
   onDelete,
 }: Props) {
@@ -33,6 +36,7 @@ export default function LeadRow({
   const tabs: { key: Tab; label: string; icon: string }[] = [
     { key: "email", label: "Email", icon: "📧" },
     { key: "whatsapp", label: "WhatsApp", icon: "📱" },
+    { key: "facebook", label: "Facebook", icon: "📘" },
     { key: "followups", label: "Follow-ups", icon: "🔄" },
     { key: "notes", label: "Notes", icon: "📝" },
   ];
@@ -121,6 +125,9 @@ export default function LeadRow({
             )}
             {activeTab === "whatsapp" && (
               <WhatsAppPanel lead={lead} onMarkSent={onMarkWaSent} />
+            )}
+            {activeTab === "facebook" && (
+              <FacebookPanel lead={lead} onMarkSent={onMarkFbSent} />
             )}
             {activeTab === "followups" && (
               <FollowUpPanel lead={lead} onSendFollowUp={onSendEmail} />

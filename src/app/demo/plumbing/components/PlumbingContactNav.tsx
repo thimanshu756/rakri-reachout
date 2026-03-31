@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function PlumbingContactNav() {
+export default function PlumbingContactNav({ businessName = "Royal Plumb & Brass" }: { businessName?: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const links = [
@@ -20,7 +20,7 @@ export default function PlumbingContactNav() {
           className="text-xl font-extrabold text-[#011545]"
           style={{ fontFamily: "var(--font-manrope)" }}
         >
-          Royal Plumb &amp; Brass
+          {businessName}
         </div>
 
         {/* Desktop Links */}

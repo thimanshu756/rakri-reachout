@@ -1,6 +1,6 @@
 "use client";
 
-export default function RoofContactFooter() {
+export default function RoofContactFooter({ businessName = "{businessName}" }: { businessName?: string }) {
   return (
     <footer className="bg-[#151c27] w-full border-t-4 border-[#9e2016]">
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 px-12 py-20 w-full max-w-screen-2xl mx-auto">
@@ -9,7 +9,7 @@ export default function RoofContactFooter() {
             className="text-lg font-black text-[#fbf9f6] uppercase tracking-tighter"
             style={{ fontFamily: "var(--font-epilogue)" }}
           >
-            STRONGROOF CO.
+            {businessName}
           </div>
           <p className="text-[#404753] text-sm leading-relaxed">
             Precision ironwork meets the permanence of stone. Your authority in
@@ -84,7 +84,7 @@ export default function RoofContactFooter() {
             ))}
           </div>
           <p className="text-[#404753] text-xs mt-6 leading-tight uppercase font-bold">
-            &copy; {new Date().getFullYear()} STRONGROOF CO. ARCHITECTURAL
+            &copy; {new Date().getFullYear()} {businessName} ARCHITECTURAL
             INTEGRITY &amp; STONE-AND-IRON AUTHORITY.
           </p>
         </div>

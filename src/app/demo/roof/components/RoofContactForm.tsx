@@ -1,6 +1,6 @@
 "use client";
 
-export default function RoofContactForm() {
+export default function RoofContactForm({ phone = "(888) 555-ROOF", city = "Denver, CO 80202" }: { phone?: string; city?: string }) {
   return (
     <section className="max-w-screen-xl mx-auto px-8 -mt-16 relative z-20 pb-24">
       <div className="flex flex-col lg:flex-row gap-12">
@@ -124,7 +124,7 @@ export default function RoofContactForm() {
             {
               icon: "call",
               title: "24/7 Storm Line",
-              content: <p className="text-2xl font-black text-[#151c27]">(888) 555-ROOF</p>,
+              content: <p className="text-2xl font-black text-[#151c27]">{phone}</p>,
             },
             {
               icon: "mail",
@@ -136,9 +136,7 @@ export default function RoofContactForm() {
               title: "Headquarters",
               content: (
                 <p className="text-[#151c27] font-semibold">
-                  4550 Architectural Way, Suite 200
-                  <br />
-                  Denver, CO 80202
+                  {city}
                 </p>
               ),
             },

@@ -1,6 +1,6 @@
 "use client";
 
-export default function RoofCTA() {
+export default function RoofCTA({ phone = "(555) 010-9988" }: { phone?: string }) {
   return (
     <section className="relative bg-gradient-to-br from-[#9e2016] to-[#c0392b] text-white py-24 overflow-hidden">
       <div
@@ -26,8 +26,7 @@ export default function RoofCTA() {
             href="tel:5550109988"
             style={{ fontFamily: "var(--font-epilogue)" }}
           >
-            <span className="material-symbols-outlined">call</span> Call (555)
-            010-9988
+            <span className="material-symbols-outlined">call</span> Call {phone}
           </a>
           <a
             className="border-2 border-white text-white px-10 py-5 uppercase tracking-widest text-sm hover:bg-white hover:text-[#9e2016] transition-all"

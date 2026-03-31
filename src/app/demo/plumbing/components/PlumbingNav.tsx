@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function PlumbingNav() {
+export default function PlumbingNav({ businessName = "Plumbing Excellence", phone = "{phone}" }: { businessName?: string; phone?: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const links = [
@@ -22,7 +22,7 @@ export default function PlumbingNav() {
           className="text-2xl font-extrabold text-[#011545] uppercase"
           style={{ fontFamily: "var(--font-manrope)" }}
         >
-          Plumbing Excellence
+          {businessName}
         </a>
 
         {/* Desktop Links */}
@@ -53,7 +53,7 @@ export default function PlumbingNav() {
               >
                 call
               </span>
-              <span>(555) 123-4567</span>
+              <span>{phone}</span>
             </div>
             <button
               className="bg-[#7E5700] text-white px-6 py-3 rounded-full text-xs font-bold tracking-wider hover:scale-105 transition-transform"
@@ -98,7 +98,7 @@ export default function PlumbingNav() {
             >
               call
             </span>
-            <span>(555) 123-4567</span>
+            <span>{phone}</span>
           </div>
           <button
             className="w-full mt-2 bg-[#7E5700] text-white px-6 py-3 rounded-full text-xs font-bold tracking-wider"
