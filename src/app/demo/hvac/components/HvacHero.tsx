@@ -1,6 +1,6 @@
 "use client";
 
-export default function HvacHero() {
+export default function HvacHero({ phone = "(555) 234-5678", rating = 4.8, reviewCount = 350 }: { phone?: string; rating?: number; reviewCount?: number }) {
   const heroImages = [
     "https://lh3.googleusercontent.com/aida-public/AB6AXuAsQY_u1f7tcAicFbPamD7N2a-k-kq7YAtcyw8XznnnPPxXfAiK67va4AK6FSLZeCj9gUw-gRwbQX8k_fdTXWHj1zqJZzgvWRksxRZEUPbyEVN10_TdTshDRxPrFuvGNw3zUKtyfwTDl8s_OJm0v2kABHWhfttGcPgEPtOGdFMg8itwvBYZANEP5_Ctq9DwhUv8qm-tYR-bwyV",
     "https://lh3.googleusercontent.com/aida-public/AB6AXuBu_d1iz1ZPsQl2AM4b0MhkIPfxGGeGSKq3fZ-oojPpWp2ccQpJnDsMj8ZFT1o5YesbazsA4L4f6c4vUQrexj_H7rkCEHgFdFGuKGu6PFvc9rEm4XSFdAoErGFH64tRqegrsX9OYFATlIhAB3NlNFSqLDnfCp-x10NVyeiwkAa4VrpWmX2vIZQ8xmvt6dpugsZZn06gpz4qNHlf9CarOo9mLSFzr1qUNddjwMooxkZkN2IUDtaDWJHqVWasdUNz-Il40MZzQHWIaEZo",

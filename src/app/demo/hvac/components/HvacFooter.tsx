@@ -7,7 +7,7 @@ const instagramImages = [
   "https://lh3.googleusercontent.com/aida-public/AB6AXuDUicKDrMlYTnFOqIOluQ4JPWO4YLbJ74u2lNIaGxm_IIy0699QkMktFKsC9RRCkqouuW02AD0V1yvgunPKh2UtvsQYQwtWnCMuIrJ1c0w9NstV3y0NzaR8BfWSlw3P1JUH49oF3esi6Oi2GPkCfGO-GNJlIT3HR72ir52oLUyjRuK_EDWM_vnfMnmaRs13ph_4vUL4rKXvOnypaTRQ5v1LMPx70DxuOfRJq3LEixkfLtYPmtAOOKAyhgh_ubvha2E5H05yzhTnwLdy",
 ];
 
-export default function HvacFooter() {
+export default function HvacFooter({ businessName = "ComfortPro HVAC", phone = "(555) 234-5678", city = "Your City" }: { businessName?: string; phone?: string; city?: string }) {
   return (
     <footer className="text-[#fcf9f4] w-full py-16 px-8 leading-[1.65] text-sm" style={{ background: "#a13b05" }}>
       <div className="grid grid-cols-1 md:grid-cols-4 gap-12 max-w-7xl mx-auto">

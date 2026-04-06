@@ -57,7 +57,20 @@ import PestFAQ from "@/app/demo/pest/components/PestFAQ";
 import PestCTABanner from "@/app/demo/pest/components/PestCTABanner";
 import PestFooter from "@/app/demo/pest/components/PestFooter";
 
-// HVAC fallback (old generic components)
+// HVAC components
+import HvacNav from "@/app/demo/hvac/components/HvacNav";
+import HvacHero from "@/app/demo/hvac/components/HvacHero";
+import HvacAbout from "@/app/demo/hvac/components/HvacAbout";
+import HvacServices from "@/app/demo/hvac/components/HvacServices";
+import HvacWhyChooseUs from "@/app/demo/hvac/components/HvacWhyChooseUs";
+import HvacQuoteBanner from "@/app/demo/hvac/components/HvacQuoteBanner";
+import HvacFAQ from "@/app/demo/hvac/components/HvacFAQ";
+import HvacTestimonials from "@/app/demo/hvac/components/HvacTestimonials";
+import HvacInsights from "@/app/demo/hvac/components/HvacInsights";
+import HvacCTABanner from "@/app/demo/hvac/components/HvacCTABanner";
+import HvacFooter from "@/app/demo/hvac/components/HvacFooter";
+
+// Fallback (old generic components)
 import PremiumNav from "@/components/demo/PremiumNav";
 import PremiumHero from "@/components/demo/PremiumHero";
 import ProblemSection from "@/components/demo/ProblemSection";
@@ -190,7 +203,26 @@ export default async function LeadLandingPage({ params }: PageProps) {
     );
   }
 
-  // HVAC fallback → old generic components
+  // HVAC niche → Stitch HVAC design
+  if (niche === "hvac") {
+    return (
+      <main className="bg-[#FEF9F1] text-[#1D1C17] antialiased" style={{ fontFamily: "var(--font-inter)" }}>
+        <HvacNav businessName={businessName} phone={phone} />
+        <HvacHero phone={phone} rating={rating} reviewCount={reviewCount} />
+        <HvacAbout />
+        <HvacServices />
+        <HvacWhyChooseUs />
+        <HvacQuoteBanner />
+        <HvacFAQ />
+        <HvacTestimonials />
+        <HvacInsights />
+        <HvacCTABanner phone={phone} />
+        <HvacFooter businessName={businessName} phone={phone} city={city} />
+      </main>
+    );
+  }
+
+  // Fallback → old generic components
   const config = getNicheConfig(niche);
   const themeVars = {
     "--niche-primary": config.theme.primary,

@@ -1,6 +1,6 @@
 "use client";
 
-export default function HvacCTABanner() {
+export default function HvacCTABanner({ phone = "(555) 234-5678" }: { phone?: string }) {
   return (
     <section className="py-24 px-8" style={{ background: "#f5f0e6" }} id="emergency">
       <div

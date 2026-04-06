@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-export default function HvacNav() {
+export default function HvacNav({ businessName = "ComfortPro HVAC", phone = "(555) 234-5678" }: { businessName?: string; phone?: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const links = [
@@ -37,7 +37,7 @@ export default function HvacNav() {
           >
             local_fire_department
           </span>
-          Precision &amp; Comfort
+          {businessName}
         </a>
 
         {/* Desktop Links */}
@@ -74,7 +74,7 @@ export default function HvacNav() {
               >
                 call
               </span>
-              <span className="text-sm">(555) 234-8900</span>
+              <span className="text-sm">{phone}</span>
             </div>
             <button
               className="text-white px-6 py-3 rounded-full text-xs font-bold tracking-wider hover:scale-105 transition-transform"
@@ -127,7 +127,7 @@ export default function HvacNav() {
             >
               call
             </span>
-            <span>(555) 234-8900</span>
+            <span>{phone}</span>
           </div>
           <button
             className="w-full mt-2 text-white px-6 py-3 rounded-full text-xs font-bold tracking-wider"
