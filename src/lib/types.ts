@@ -13,6 +13,7 @@ export type LeadStage =
   | "outreach_ready"
   | "email_sent"
   | "wa_sent"
+  | "fb_sent"
   | "followed_up_1"
   | "followed_up_2"
   | "followed_up_3"
@@ -76,6 +77,7 @@ export const STAGE_LABELS: Record<LeadStage, string> = {
   outreach_ready: "Ready to Send",
   email_sent: "Email Sent",
   wa_sent: "WhatsApp Sent",
+  fb_sent: "Facebook Sent",
   followed_up_1: "Follow-up 1",
   followed_up_2: "Follow-up 2",
   followed_up_3: "Follow-up 3",
@@ -93,6 +95,7 @@ export const STAGE_COLORS: Record<LeadStage, string> = {
   outreach_ready: "bg-blue-100 text-blue-700",
   email_sent: "bg-indigo-100 text-indigo-700",
   wa_sent: "bg-green-100 text-green-700",
+  fb_sent: "bg-blue-100 text-blue-700",
   followed_up_1: "bg-yellow-100 text-yellow-700",
   followed_up_2: "bg-orange-100 text-orange-700",
   followed_up_3: "bg-red-100 text-red-700",

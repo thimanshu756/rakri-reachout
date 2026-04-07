@@ -37,6 +37,36 @@ COUNTRY_NAMES = {
 }
 
 
+def find_fb_pages_via_duckduckgo(query):
+    """Use DuckDuckGo Lite (no bot detection) to find Facebook page URLs."""
+    import urllib.request
+    import urllib.parse
+
+    url = f"https://lite.duckduckgo.com/lite/?q={urllib.parse.quote(query)}"
+    headers = {"User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)"}
+    req = urllib.request.Request(url, headers=headers)
+
+    try:
+        resp = urllib.request.urlopen(req, timeout=15)
+        html = resp.read().decode("utf-8")
+    except Exception as e:
+        print(f"⚠️  DuckDuckGo search failed: {e}")
+        return []
+
+    # DuckDuckGo Lite wraps URLs in redirect links
+    import urllib.parse as urlparse
+    fb_links = []
+    for match in re.finditer(r'uddg=(https%3A%2F%2F[^&"]+facebook\.com[^&"]+)', html):
+        decoded = urllib.parse.unquote(match.group(1))
+        # Clean up: only keep page URLs, skip posts/groups/events
+        if "/posts/" in decoded or "/groups/" in decoded or "/events/" in decoded:
+            continue
+        if decoded not in fb_links:
+            fb_links.append(decoded)
+
+    return fb_links
+
+
 def scrape_facebook_pages(niche, city, country="UK", target_count=20, headed=False):
     """
     Search Facebook Pages for local businesses and extract contact info.
@@ -46,16 +76,20 @@ def scrape_facebook_pages(niche, city, country="UK", target_count=20, headed=Fal
     seen_names = set()
 
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=not headed)
+        browser = p.chromium.launch(
+            headless=not headed,
+            args=["--disable-blink-features=AutomationControlled"],
+        )
         context = browser.new_context(
             viewport={"width": 1280, "height": 900},
-            user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+            user_agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36",
         )
         page = context.new_page()
+        page.add_init_script("delete Object.getPrototypeOf(navigator).webdriver")
 
         search_term = NICHE_SEARCH_TERMS.get(niche, niche)
         country_name = COUNTRY_NAMES.get(country.upper(), country)
-        query = f"{search_term} {city} {country_name}"
+        query = f"facebook.com {search_term} {city} {country_name}"
 
         print(f"\n{'='*60}")
         print(f"📘  RAKRIAI FACEBOOK SCRAPER")
@@ -67,171 +101,139 @@ def scrape_facebook_pages(niche, city, country="UK", target_count=20, headed=Fal
         print(f"   Targets:  {target_count}")
         print(f"{'='*60}\n")
 
-        # Search Facebook Pages
-        search_url = f"https://www.facebook.com/search/pages/?q={query.replace(' ', '%20')}"
-        print(f"🔍 Searching Facebook Pages...")
+        # Step 1: Find Facebook page URLs via DuckDuckGo Lite (no CAPTCHA)
+        print(f"🔍 Searching DuckDuckGo for Facebook pages...")
+        fb_links = find_fb_pages_via_duckduckgo(query)
 
-        try:
-            page.goto(search_url, wait_until="domcontentloaded", timeout=30000)
-            time.sleep(3)
-        except Exception as e:
-            print(f"⚠️  Could not load Facebook search: {str(e)[:80]}")
-            # Facebook may require login — try Google search as fallback
-            print("📎 Falling back to Google search for Facebook pages...")
-            google_query = f"site:facebook.com {search_term} {city} {country_name}"
-            page.goto(f"https://www.google.com/search?q={google_query.replace(' ', '+')}&num=50", wait_until="domcontentloaded", timeout=30000)
-            time.sleep(2)
+        # Also try a second query variation for more results
+        query2 = f"site:facebook.com {search_term} {city} {country_name}"
+        fb_links2 = find_fb_pages_via_duckduckgo(query2)
+        for link in fb_links2:
+            if link not in fb_links:
+                fb_links.append(link)
 
-        # Handle Facebook login wall — use Google fallback
-        if "login" in page.url.lower() or "checkpoint" in page.url.lower():
-            print("📎 Facebook requires login — using Google search fallback...")
-            google_query = f"site:facebook.com {search_term} {city} {country_name}"
-            page.goto(f"https://www.google.com/search?q={google_query.replace(' ', '+')}&num=50", wait_until="domcontentloaded", timeout=30000)
-            time.sleep(2)
+        print(f"   Found {len(fb_links)} Facebook page links\n")
 
-            # Accept Google cookies if prompted
+        # Step 2: Visit each Facebook page and extract contact info
+        for idx, fb_link in enumerate(fb_links[:target_count * 2]):
+            if len(targets) >= target_count:
+                break
+
             try:
-                accept_btn = page.locator("button:has-text('Accept all')")
-                if accept_btn.is_visible(timeout=3000):
-                    accept_btn.click()
-                    time.sleep(1)
-            except Exception:
-                pass
+                print(f"   Checking [{idx+1}] {fb_link[:60]}...")
+                page.goto(fb_link, wait_until="domcontentloaded", timeout=15000)
+                time.sleep(random.uniform(2, 3))
 
-            # Extract Facebook page URLs from Google results
-            fb_links = []
-            google_results = page.locator('a[href*="facebook.com"]').all()
-            for result in google_results:
-                href = result.get_attribute("href") or ""
-                # Only keep actual business pages, not groups or posts
-                if "facebook.com/" in href and "/posts/" not in href and "/groups/" not in href and "/events/" not in href:
-                    # Clean up Google redirect URLs
-                    if "url=" in href:
-                        match = re.search(r'url=(https?://[^&]+facebook\.com/[^&]+)', href)
-                        if match:
-                            href = match.group(1)
-                    if href not in fb_links:
-                        fb_links.append(href)
+                # Skip if login wall
+                if "login" in page.url.lower():
+                    print(f"      ✗ Login required, skipping")
+                    continue
 
-            print(f"   Found {len(fb_links)} Facebook page links from Google\n")
-
-            # Visit each Facebook page and extract info
-            for idx, fb_link in enumerate(fb_links[:target_count * 2]):  # visit more than needed
-                if len(targets) >= target_count:
-                    break
-
+                # Extract business name from page title or h1
+                name = ""
                 try:
-                    print(f"   Checking [{idx+1}] {fb_link[:60]}...")
-                    page.goto(fb_link, wait_until="domcontentloaded", timeout=15000)
-                    time.sleep(random.uniform(2, 3))
+                    title = page.title() or ""
+                    # Facebook titles are usually "Business Name | Facebook"
+                    name = title.split("|")[0].split("-")[0].strip()
+                    name = name.replace("Facebook", "").strip()
+                except Exception:
+                    pass
 
-                    # Skip if login wall
-                    if "login" in page.url.lower():
-                        print(f"      ✗ Login required, skipping")
-                        continue
+                if not name or len(name) < 3 or name in seen_names:
+                    continue
+                seen_names.add(name)
 
-                    # Extract business name from page title or h1
-                    name = ""
-                    try:
-                        title = page.title() or ""
-                        # Facebook titles are usually "Business Name | Facebook"
-                        name = title.split("|")[0].split("-")[0].strip()
-                        # Remove "Facebook" if it's still there
-                        name = name.replace("Facebook", "").strip()
-                    except Exception:
-                        pass
+                # Get page HTML content for parsing
+                content = page.content()
 
-                    if not name or len(name) < 3 or name in seen_names:
-                        continue
-                    seen_names.add(name)
+                # Extract phone number — only match real phone formats
+                # Avoid matching Facebook user IDs (long digit strings in URLs)
+                phone = ""
+                phone_patterns = [
+                    r'(\+44\s?\d{4}\s?\d{6})',     # UK: +44 7943 164685
+                    r'(\+44\s?\d{3}\s?\d{3}\s?\d{4})', # UK: +44 121 234 5678
+                    r'(07\d{3}\s?\d{6})',           # UK local mobile: 07943 164685
+                    r'(01[1-9]\d{1,2}\s?\d{3}\s?\d{3,4})', # UK landline: 0121 234 5678 (not 010x)
+                    r'(\+1[\s-]?\d{3}[\s-]?\d{3}[\s-]?\d{4})', # US/CA
+                    r'(\+971\s?\d{2}\s?\d{3}\s?\d{4})', # UAE
+                    r'(\+353\s?\d{2,3}\s?\d{3}\s?\d{4})', # Ireland
+                    r'(\+61\s?\d\s?\d{4}\s?\d{4})',  # Australia
+                    r'(\+49\s?\d{3,4}\s?\d{7,8})',   # Germany
+                    r'(\+31\s?\d\s?\d{8})',          # Netherlands
+                ]
+                for pattern in phone_patterns:
+                    match = re.search(pattern, content)
+                    if match:
+                        phone = match.group(1).strip()
+                        break
 
-                    # Get page HTML content for parsing
-                    content = page.content()
+                # Extract email
+                email = ""
+                email_match = re.search(r'[\w.+-]+@[\w-]+\.[\w.]+', content)
+                if email_match:
+                    found_email = email_match.group(0)
+                    skip_domains = ["facebook.com", "fb.com", "sentry.io", "w3.org", "schema.org", "example.com"]
+                    if not any(domain in found_email.lower() for domain in skip_domains):
+                        email = found_email
 
-                    # Extract phone number
-                    phone = ""
-                    phone_patterns = [
-                        r'(\+44[\s\d]{10,13})',       # UK
-                        r'(\+1[\s\d\-]{10,14})',       # US/CA
-                        r'(\+971[\s\d]{8,12})',        # UAE
-                        r'(\+31[\s\d]{9,12})',         # Netherlands
-                        r'(\+353[\s\d]{8,12})',        # Ireland
-                        r'(\+49[\s\d]{10,14})',        # Germany
-                        r'(\+61[\s\d]{9,12})',         # Australia
-                        r'(0[\d\s]{10,13})',           # Local format
-                    ]
-                    for pattern in phone_patterns:
-                        match = re.search(pattern, content)
-                        if match:
-                            phone = match.group(1).strip()
-                            break
-
-                    # Extract email
-                    email = ""
-                    email_match = re.search(r'[\w.+-]+@[\w-]+\.[\w.]+', content)
-                    if email_match:
-                        found_email = email_match.group(0)
-                        # Skip Facebook's own emails and common false positives
-                        skip_domains = ["facebook.com", "fb.com", "sentry.io", "w3.org", "schema.org", "example.com"]
-                        if not any(domain in found_email.lower() for domain in skip_domains):
-                            email = found_email
-
-                    # Check if they have a website linked
-                    has_website = False
-                    website_indicators = [
-                        'data-lynx-mode="asynclazy"',
-                        "Website</span>",
-                        "website</span>",
-                    ]
-                    # Also check for common website URL patterns in the page
-                    website_match = re.search(r'(https?://(?!facebook\.com|fb\.com|instagram\.com|twitter\.com|x\.com)[\w.-]+\.\w{2,})', content)
-                    if website_match:
+                # Check if they have a website linked on their FB page
+                # Look for explicit website section, not random URLs in page HTML
+                has_website = False
+                # Facebook shows website in specific patterns
+                website_indicators = [
+                    r'Website\s*</span>',               # "Website" label
+                    r'"website"\s*:\s*"https?://',       # JSON-LD
+                    r'l\.facebook\.com/l\.php\?u=http',  # FB outbound link wrapper
+                ]
+                for indicator in website_indicators:
+                    if re.search(indicator, content, re.IGNORECASE):
                         has_website = True
+                        break
 
-                    # Extract followers/likes count
-                    followers = 0
-                    follower_match = re.search(r'([\d,]+)\s*(?:followers|likes|people\s+like)', content, re.IGNORECASE)
-                    if follower_match:
-                        followers = int(follower_match.group(1).replace(",", ""))
+                # Extract followers/likes count
+                followers = 0
+                follower_match = re.search(r'([\d,]+)\s*(?:followers|likes|people\s+like)', content, re.IGNORECASE)
+                if follower_match:
+                    followers = int(follower_match.group(1).replace(",", ""))
 
-                    # Skip if they have a website (we only want targets without)
-                    if has_website:
-                        print(f"      ✗ {name} — has website, skipping")
-                        continue
-
-                    if not phone:
-                        print(f"      ✗ {name} — no phone found, skipping")
-                        continue
-
-                    lead = {
-                        "business_name": name,
-                        "phone": phone,
-                        "email": email,
-                        "has_email": "True" if email else "False",
-                        "address": "",
-                        "city": city,
-                        "state": "",
-                        "country": country,
-                        "niche": niche,
-                        "rating": 0,
-                        "review_count": 0,
-                        "maps_url": "",
-                        "fb_url": fb_link,
-                        "fb_followers": followers,
-                    }
-
-                    targets.append(lead)
-                    email_tag = f" | 📧 {email}" if email else ""
-                    print(f"      🎯 [{len(targets)}/{target_count}] {name} | {phone}{email_tag}")
-
-                except PlaywrightTimeout:
-                    print(f"      ✗ Timeout, skipping")
-                    continue
-                except Exception as e:
-                    print(f"      ✗ Error: {str(e)[:60]}")
+                # Skip if they have a website (we only want targets without)
+                if has_website:
+                    print(f"      ✗ {name} — has website, skipping")
                     continue
 
-                time.sleep(random.uniform(1, 2))
+                if not phone:
+                    print(f"      ✗ {name} — no phone found, skipping")
+                    continue
+
+                lead = {
+                    "business_name": name,
+                    "phone": phone,
+                    "email": email,
+                    "has_email": "True" if email else "False",
+                    "address": "",
+                    "city": city,
+                    "state": "",
+                    "country": country,
+                    "niche": niche,
+                    "rating": 0,
+                    "review_count": 0,
+                    "maps_url": "",
+                    "fb_url": fb_link,
+                    "fb_followers": followers,
+                }
+
+                targets.append(lead)
+                email_tag = f" | 📧 {email}" if email else ""
+                print(f"      🎯 [{len(targets)}/{target_count}] {name} | {phone}{email_tag}")
+
+            except PlaywrightTimeout:
+                print(f"      ✗ Timeout, skipping")
+                continue
+            except Exception as e:
+                print(f"      ✗ Error: {str(e)[:60]}")
+                continue
+
+            time.sleep(random.uniform(1, 2))
 
         browser.close()
 

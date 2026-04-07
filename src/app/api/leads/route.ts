@@ -14,12 +14,14 @@ export async function GET(request: NextRequest) {
   const city = searchParams.get("city");
   const stage = searchParams.get("stage");
   const search = searchParams.get("search");
+  const country = searchParams.get("country");
 
   const where: Record<string, unknown> = {};
   if (niche) where.niche = niche;
   if (city) where.city = { contains: city, mode: "insensitive" };
   if (stage) where.stage = stage;
   if (search) where.businessName = { contains: search, mode: "insensitive" };
+  if (country) where.country = country;
 
   const leads = await prisma.lead.findMany({
     where,

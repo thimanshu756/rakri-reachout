@@ -1,11 +1,11 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useMemo } from "react";
 import { Lead, LeadStage } from "@/lib/types";
 import AuthGate from "@/components/dashboard/AuthGate";
 import StatsBar from "@/components/dashboard/StatsBar";
 import FollowUpQueue from "@/components/dashboard/FollowUpQueue";
-import FilterBar from "@/components/dashboard/FilterBar";
+import FilterBar, { Channel } from "@/components/dashboard/FilterBar";
 import LeadsTable from "@/components/dashboard/LeadsTable";
 import ImportModal from "@/components/dashboard/ImportModal";
 import Toast from "@/components/dashboard/Toast";
@@ -23,6 +23,8 @@ export default function DashboardPage() {
   const [city, setCity] = useState("");
   const [stage, setStage] = useState("");
   const [search, setSearch] = useState("");
+  const [channel, setChannel] = useState<Channel>("");
+  const [country, setCountry] = useState("");
 
   // Check existing auth on mount
   useEffect(() => {
@@ -50,13 +52,25 @@ export default function DashboardPage() {
     if (city) params.set("city", city);
     if (stage) params.set("stage", stage);
     if (search) params.set("search", search);
+    if (country) params.set("country", country);
 
     const res = await fetch(`/api/leads?${params}`);
     if (res.ok) {
       const data = await res.json();
       setLeads(data);
     }
-  }, [niche, city, stage, search]);
+  }, [niche, city, stage, search, country]);
+
+  // Channel filter applied client-side (based on lead data availability)
+  const filteredLeads = useMemo(() => {
+    if (!channel) return leads;
+    return leads.filter((lead) => {
+      if (channel === "whatsapp") return !!lead.phone;
+      if (channel === "facebook") return !!lead.fbUrl;
+      if (channel === "email") return lead.hasEmail;
+      return true;
+    });
+  }, [leads, channel]);
 
   // Refetch on filter change
   useEffect(() => {
@@ -106,6 +120,18 @@ export default function DashboardPage() {
     setToast({ message: "Marked as WhatsApp sent", type: "success" });
   }
 
+  async function handleMarkFbSent(leadId: string) {
+    await fetch(`/api/leads/${leadId}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ stage: "fb_sent", outreachAt: new Date().toISOString() }),
+    });
+    setLeads((prev) =>
+      prev.map((l) => (l.id === leadId ? { ...l, stage: "fb_sent" as LeadStage } : l))
+    );
+    setToast({ message: "Marked as Facebook sent", type: "success" });
+  }
+
   async function handleSaveNotes(leadId: string, notes: string) {
     await fetch(`/api/leads/${leadId}`, {
       method: "PUT",
@@ -151,7 +177,7 @@ export default function DashboardPage() {
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6">
           <div>
             <h1 className="text-xl font-bold text-gray-900">RakriAI Dashboard</h1>
-            <p className="text-sm text-gray-500">{leads.length} leads</p>
+            <p className="text-sm text-gray-500">{filteredLeads.length} leads{channel || country ? ` (${leads.length} total)` : ""}</p>
           </div>
           <div className="flex gap-2">
             <button
@@ -184,10 +210,14 @@ export default function DashboardPage() {
           city={city}
           stage={stage}
           search={search}
+          channel={channel}
+          country={country}
           onNicheChange={setNiche}
           onCityChange={setCity}
           onStageChange={setStage}
           onSearchChange={setSearch}
+          onChannelChange={setChannel}
+          onCountryChange={setCountry}
         />
 
         {/* Leads table */}
@@ -197,11 +227,11 @@ export default function DashboardPage() {
           </div>
         ) : (
           <LeadsTable
-            leads={leads}
+            leads={filteredLeads}
             onStageChange={handleStageChange}
             onSendEmail={handleSendEmail}
             onMarkWaSent={handleMarkWaSent}
-            onMarkFbSent={handleMarkWaSent}
+            onMarkFbSent={handleMarkFbSent}
             onSaveNotes={handleSaveNotes}
             onDelete={handleDelete}
           />
