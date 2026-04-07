@@ -26,7 +26,7 @@ const posts = [
     category: "Energy",
     date: "April 28, 2024",
     author: "Founder Eric",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBDIqrtaFRb-8VgsLa1IaY8qWwU5Ykgr0NG9T-JTXi_FA4im5CfQrvFVBFcHRkMlfBv7CKP80pI4G08Yq941GIAHdLu0GejucAq9gVOJnZorC4lqx5ogbMisMBa_e6mvPTDl72V1w9J88",
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBDIqrtaFRb-8VgsLa1IaY8qWwU5Ykgr0NG9T-JTXi_FA4im5CfQrvFVBFcHRkMlfBvKCQqy63fRw_nYgTtS5n5t8EMUU0CTQ1HcRVvCvZRYKdTrVV5tBldPprWlNdkMnSkGCMaVr6sd9KHZDJ9dyykrPoB9ofjxHGFUItpiQyC8I3NC_uujdPIX3rBmAzDYRZnaBOYEtzSlngT2xC6kfzK1lSbcDtApczgkUzKkNCIRB4QooFaeUKdIekidVeJT5gK2_BuMJCF_dWq",
   },
 ];
 

@@ -40,7 +40,7 @@ export default function HvacQuoteBanner() {
             <img
               alt="Marcus Thornton"
               className="w-12 h-12 rounded-full object-cover"
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCpU3HWrzeahJtd1y7Um_t4kTFJNtUC8VkSRfRpmV5IuaemnvI-npxXLWmFYSU_xv3PlQcyLjdGzr3LmoxzTWptJLylzB0R1aylUbB1FDBdKz5NbVAY3hRB1YyKckauswskRACkVdgNlzaoHzkRoUaVZ78jc9Pqcg5xzsMRtmFkb5dx9jYzfEUjZIlHnlt0sLHdgGidsEx1ENl9etPGzrSxqEhGzSA9vULF2FNSE1ri7QPQe96Gfnl5kVeczOMNdVKo91_3xpyyqH"
+              src="https://ui-avatars.com/api/?name=Marcus+Thornton&background=805600&color=fff&size=96&font-size=0.4&bold=true"
             />
             <div>
               <p className="text-white font-bold">Marcus Thornton</p>

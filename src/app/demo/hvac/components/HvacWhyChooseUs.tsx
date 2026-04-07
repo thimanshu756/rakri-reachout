@@ -11,7 +11,7 @@ const advantages = [
   },
   {
     title: "Smart Comfort For Every Season",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAMWkDfkZXHL8auPOyma90fzmwNlU6aeiJ8xp1gfXjFhZ9JfIY8x-dNnn0gJK2FxQ_zPCq18Ni2jkLjUm5iHIyLOFb1H6oveccyICIaxVm1t9beiFk-0EfS-N-8VoUI5O4c0JaloiBob60G1XSOKABRfMkFKVYlkvlDVjxXDAC5t8fDKJ7IDSndu9ocljp7sJsX-5ZEEVym2T2Wfo-Zxq54ONF8jhrvhdOhrbfYCNtY_7uYu-UPrIrIOS38x8m0LqlcCQhwacoDD1f",
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAMWkDfkZXHL8auPOyma90fzmwNlU6aeiJ8xp1gfXjIFhZ9JfIY8x-dNnn0gJK2FxQ_zPCq18Ni2jkLjUm5iHIyLOFb1H6oveccyICIaxVm1t9beiFk-0EfS-N-8VoUI5O4c0JaloiBob60G1XSOKABRfMkFKVYlkvlDVjxXDAC5t8fDKJ7IDSndu9ocljp7sJsX-5ZEEVym2T2Wfo-Zxq54ONF8jhrvhdOhrbfYCNtY_7uYu-UPrIrIOS38x8m0LqlcCQhwacoDD1f",
   },
   {
     title: "Energy Efficient Solutions",

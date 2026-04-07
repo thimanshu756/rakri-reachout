@@ -101,7 +101,7 @@ export const advantages = [
   },
   {
     title: "Smart Comfort For Every Season",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAMWkDfkZXHL8auPOyma90fzmwNlU6aeiJ8xp1gfXjFhZ9JfIY8x-dNnn0gJK2FxQ_zPCq18Ni2jkLjUm5iHIyLOFb1H6oveccyICIaxVm1t9beiFk-0EfS-N-8VoUI5O4c0JaloiBob60G1XSOKABRfMkFKVYlkvlDVjxXDAC5t8fDKJ7IDSndu9ocljp7sJsX-5ZEEVym2T2Wfo-Zxq54ONF8jhrvhdOhrbfYCNtY_7uYu-UPrIrIOS38x8m0LqlcCQhwacoDD1f",
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuAMWkDfkZXHL8auPOyma90fzmwNlU6aeiJ8xp1gfXjIFhZ9JfIY8x-dNnn0gJK2FxQ_zPCq18Ni2jkLjUm5iHIyLOFb1H6oveccyICIaxVm1t9beiFk-0EfS-N-8VoUI5O4c0JaloiBob60G1XSOKABRfMkFKVYlkvlDVjxXDAC5t8fDKJ7IDSndu9ocljp7sJsX-5ZEEVym2T2Wfo-Zxq54ONF8jhrvhdOhrbfYCNtY_7uYu-UPrIrIOS38x8m0LqlcCQhwacoDD1f",
   },
   {
     title: "Energy Efficient Solutions",
@@ -123,14 +123,14 @@ export const testimonials = [
     role: "Real Estate Developer",
     text: "They fixed an airflow issue that three other companies couldn't solve. Their diagnostic equipment is truly next level.",
     rating: 5,
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuB8tr-zjixS2Orld9RyVMJt2Rd7w86a8fVBjBP9oM2SHi6YChpv6BOKmnxo-Sft7SfCCZ7uRTYtb03V7AY2Zf3W0HRE2YQyno5a2XRtoZMs3czyGX1S78x3s8MMbB3rOCTpnECQqF_3QlXDnniG73PgmkNTAfPmmTgh8fZ1R_O94_X1p8RgdevsfzJxtxCa-U7LKObVv7S26hy7m30ucfwx5aS8fd0NjOcdpZmQ__vHqI3HVM1lnD3eeaOK1EefzsnwnrOv1hc3Ccl",
+    src: "https://ui-avatars.com/api/?name=David+R&background=a13b05&color=fff&size=96&font-size=0.4&bold=true",
   },
   {
     name: "Elena M.",
     role: "Architect",
     text: "Their maintenance plan is a lifesaver. I never have to worry about my furnace in the winter anymore. Highly recommend.",
     rating: 5,
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCEGu1n0M3_ok2NvVdfEYe0Xk1xBs_l_4rJutPXmjz6LmQR7BAYoywbN0CaRrPFCIFtjwPPUSH46rGHASgAEnumoCVtt5hbXFSn4-uAb6H2Xl-jRCm1nmQqZlFgv6ozbSATj2H9J2jlhArsWV2wFDGVA07BrXxX7fJ1woRJXX--8fp8EBf54x__KYioSJ-rsw5ubwOck20sqR8Xjl-n9R_-KSv_7jq1aPbSIX5heuIDGydJLZNE3rnL12GIg7U9yZWN1X2AveuN35Ay",
+    src: "https://ui-avatars.com/api/?name=Elena+M&background=68594d&color=fff&size=96&font-size=0.4&bold=true",
   },
 ] as const;
 
@@ -139,7 +139,7 @@ export const featuredTestimonial = {
   name: "Marcus Thornton",
   text: "The team at Precision & Comfort treated our HVAC overhaul like a mastercraft project. Our energy bills have dropped by 30% and the air quality is noticeably superior.",
   rating: 5,
-  src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBCpU3HWrzeahJtd1y7Um_t4kTFJNtUC8VkSRfRpmV5IuaemnvI-npxXLWmFYSU_xv3PlQcyLjdGzr3LmoxzTWptJLylzB0R1aylUbB1FDBdKz5NbVAY3hRB1YyKckauswskRACkVdgNlzaoHzkRoUaVZ78jc9Pqcg5xzsMRtmFkb5dx9jYzfEUjZIlHnlt0sLHdgGidsEx1ENl9etPGzrSxqEhGzSA9vULF2FNSE1ri7QPQe96Gfnl5kVeczOMNdVKo91_3xpyyqH",
+  src: "https://ui-avatars.com/api/?name=Marcus+Thornton&background=805600&color=fff&size=96&font-size=0.4&bold=true",
 } as const;
 
 // Stats
@@ -183,16 +183,16 @@ export const insights = [
     category: "Energy",
     date: "April 28, 2024",
     author: "Founder Eric",
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBDIqrtaFRb-8VgsLa1IaY8qWwU5Ykgr0NG9T-JTXi_FA4im5CfQrvFVBFcHRkMlfBv7CKP80pI4G08Yq941GIAHdLu0GejucAq9gVOJnZorC4lqx5ogbMisMBa_e6mvPTDl72V1w9J88",
+    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuBDIqrtaFRb-8VgsLa1IaY8qWwU5Ykgr0NG9T-JTXi_FA4im5CfQrvFVBFcHRkMlfBvKCQqy63fRw_nYgTtS5n5t8EMUU0CTQ1HcRVvCvZRYKdTrVV5tBldPprWlNdkMnSkGCMaVr6sd9KHZDJ9dyykrPoB9ofjxHGFUItpiQyC8I3NC_uujdPIX3rBmAzDYRZnaBOYEtzSlngT2xC6kfzK1lSbcDtApczgkUzKkNCIRB4QooFaeUKdIekidVeJT5gK2_BuMJCF_dWq",
   },
 ] as const;
 
 // Hero images
 export const heroImages = [
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuAsQY_u1f7tcAicFbPamD7N2a-k-kq7YAtcyw8XznnnPPxXfAiK67va4AK6FSLZeCj9gUw-gRwbQX8k_fdTXWHj1zqJZzgvWRksxRZEUPbyEVN10_TdTshDRxPrFuvGNw3zUKtyfwTDl8s_OJm0v2kABHWhfttGcPgEPtOGdFMg8itwvBYZANEP5_Ctq9DwhUv8qm-tYR-bwyV",
+  "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&h=600&fit=crop",
   "https://lh3.googleusercontent.com/aida-public/AB6AXuBu_d1iz1ZPsQl2AM4b0MhkIPfxGGeGSKq3fZ-oojPpWp2ccQpJnDsMj8ZFT1o5YesbazsA4L4f6c4vUQrexj_H7rkCEHgFdFGuKGu6PFvc9rEm4XSFdAoErGFH64tRqegrsX9OYFATlIhAB3NlNFSqLDnfCp-x10NVyeiwkAa4VrpWmX2vIZQ8xmvt6dpugsZZn06gpz4qNHlf9CarOo9mLSFzr1qUNddjwMooxkZkN2IUDtaDWJHqVWasdUNz-Il40MZzQHWIaEZo",
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuChdpPBfmXcBZ1Zlrr7gegKnWEGNZDMbtDOfLRLPleONFtEktGRmZ_8NEAIWCP3MUvbAHWIQPdTmRe5AMhDlOnFWik2LmrCJy5t9mjjTLHkKXN3fsLkKWwZl4Kbya47232zyBn_YQwA80n34KgQhxIRg4B-qa4tTi_DW8kkCGYo8y3Euuf5QXdC8nE9_Kp1s1uUw4S-9FG2eab8Mc8tHnz40r9knBVfb1RiiKaSOZ6sBQEn-HGHK5hAQlUk5d58kYbrpPtlmt7wK_j",
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuCNymMN2CULOu5y-kvXdid55o04grP6HQ_-5hGBUExY6AZ6Y6ztJP4GEPTVRbKvkoatYN1dj7ZkNM3mhxD9ZsO4mTaUUW9h-XBRqqgKu5CGotvDVoiO_Mwe9-oRVdY_F-iTFiO-d7Vhy6azHas15vtoXgjTbHi_XpX5uLgm9eYnzJr3fJkUf9HYi_Pbhp7eFRaYCkSigU3Q4reGfPnayzpmkIs1E20I-3nOvyty6gmP3A8rsTsFbLRmJ9ZRRLz6qfi9QWG2Mfv1Upsgx",
+  "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&h=600&fit=crop",
+  "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&h=600&fit=crop",
 ] as const;
 
 // About images

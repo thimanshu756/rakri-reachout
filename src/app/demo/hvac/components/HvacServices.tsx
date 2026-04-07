@@ -3,6 +3,8 @@
 const services = [
   {
     title: "Air Conditioning Systems",
+    description:
+      "From precision-tuned central air to cutting-edge ductless systems, we engineer cool comfort tailored to your home's unique architecture and airflow needs.",
     tags: ["#HVACServices", "#Efficiency"],
     src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCWKsY3-UOJmblQk4l-20Tu3lpTf6OFyXBsSL-6eA3WA0Ki_avxJ2As_NZ2A5X9IxTSF67x9pFGa9ec7kZrNVtgwuW3w3byMeFtrrzKMs7mIhdHvvq6NYy2FAHZIQmnCo129npUF9FkRdMS8jyDdtO-YzvqBmZstlH0qj9a9AyyLx0CtcNgNNDQgU7ms4Fe0Zn_CbiXeciOhaSrpGWJ96jE66bGYZ-HZoNQ6vkzqdyszSg8-2eI-J2CkbenAA30VgRHiznbQOQ14M9s",
   },
@@ -17,6 +19,8 @@ const services = [
   },
   {
     title: "Indoor Air Quality",
+    description:
+      "Integrated filtration, UV purification, and humidity control systems that transform your living space into a true sanctuary free from allergens and pollutants.",
     tags: ["#CleanAir"],
     src: "https://lh3.googleusercontent.com/aida-public/AB6AXuDMfK8xnrqGQcFWn1dztWyHf1SN8qBhV4g_NUMCDEZ2XQIDKPi58QTzbIpn_uqdiPLVAQH9ynokf5mEGxBDTobzGGqTcU5BJ0cAbV10xv62nkIScc1rtoKNTW-pqlCLCAdf6pogvjmPCoa18a2ZhMWuC-q-0s0fRRiISg8yntwyjBkvIsUtlf8livu5HKbkKQFTRV-XP1r75_QYxdRMF9ALxiIO5hBjfEF7IN69f0GobHqEJpQYxmVglbBUJjFmBRL2jr6grNDBlH0C",
   },

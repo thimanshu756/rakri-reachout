@@ -13,14 +13,14 @@ const testimonials = [
     name: "David R.",
     role: "Real Estate Developer",
     rating: 5,
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuB8tr-zjixS2Orld9RyVMJt2Rd7w86a8fVBjBP9oM2SHi6YChpv6BOKmnxo-Sft7SfCCZ7uRTYtb03V7AY2Zf3W0HRE2YQyno5a2XRtoZMs3czyGX1S78x3s8MMbB3rOCTpnECQqF_3QlXDnniG73PgmkNTAfPmmTgh8fZ1R_O94_X1p8RgdevsfzJxtxCa-U7LKObVv7S26hy7m30ucfwx5aS8fd0NjOcdpZmQ__vHqI3HVM1lnD3eeaOK1EefzsnwnrOv1hc3Ccl",
+    src: "https://ui-avatars.com/api/?name=David+R&background=a13b05&color=fff&size=96&font-size=0.4&bold=true",
   },
   {
     text: "Their maintenance plan is a lifesaver. I never have to worry about my furnace in the winter anymore. Highly recommend.",
     name: "Elena M.",
     role: "Architect",
     rating: 5,
-    src: "https://lh3.googleusercontent.com/aida-public/AB6AXuCEGu1n0M3_ok2NvVdfEYe0Xk1xBs_l_4rJutPXmjz6LmQR7BAYoywbN0CaRrPFCIFtjwPPUSH46rGHASgAEnumoCVtt5hbXFSn4-uAb6H2Xl-jRCm1nmQqZlFgv6ozbSATj2H9J2jlhArsWV2wFDGVA07BrXxX7fJ1woRJXX--8fp8EBf54x__KYioSJ-rsw5ubwOck20sqR8Xjl-n9R_-KSv_7jq1aPbSIX5heuIDGydJLZNE3rnL12GIg7U9yZWN1X2AveuN35Ay",
+    src: "https://ui-avatars.com/api/?name=Elena+M&background=68594d&color=fff&size=96&font-size=0.4&bold=true",
   },
 ];
 

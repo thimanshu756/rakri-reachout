@@ -2,10 +2,10 @@
 
 export default function HvacHero({ phone = "(555) 234-5678", rating = 4.8, reviewCount = 350 }: { phone?: string; rating?: number; reviewCount?: number }) {
   const heroImages = [
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuAsQY_u1f7tcAicFbPamD7N2a-k-kq7YAtcyw8XznnnPPxXfAiK67va4AK6FSLZeCj9gUw-gRwbQX8k_fdTXWHj1zqJZzgvWRksxRZEUPbyEVN10_TdTshDRxPrFuvGNw3zUKtyfwTDl8s_OJm0v2kABHWhfttGcPgEPtOGdFMg8itwvBYZANEP5_Ctq9DwhUv8qm-tYR-bwyV",
+    "https://images.unsplash.com/photo-1585771724684-38269d6639fd?w=600&h=600&fit=crop",
     "https://lh3.googleusercontent.com/aida-public/AB6AXuBu_d1iz1ZPsQl2AM4b0MhkIPfxGGeGSKq3fZ-oojPpWp2ccQpJnDsMj8ZFT1o5YesbazsA4L4f6c4vUQrexj_H7rkCEHgFdFGuKGu6PFvc9rEm4XSFdAoErGFH64tRqegrsX9OYFATlIhAB3NlNFSqLDnfCp-x10NVyeiwkAa4VrpWmX2vIZQ8xmvt6dpugsZZn06gpz4qNHlf9CarOo9mLSFzr1qUNddjwMooxkZkN2IUDtaDWJHqVWasdUNz-Il40MZzQHWIaEZo",
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuChdpPBfmXcBZ1Zlrr7gegKnWEGNZDMbtDOfLRLPleONFtEktGRmZ_8NEAIWCP3MUvbAHWIQPdTmRe5AMhDlOnFWik2LmrCJy5t9mjjTLHkKXN3fsLkKWwZl4Kbya47232zyBn_YQwA80n34KgQhxIRg4B-qa4tTi_DW8kkCGYo8y3Euuf5QXdC8nE9_Kp1s1uUw4S-9FG2eab8Mc8tHnz40r9knBVfb1RiiKaSOZ6sBQEn-HGHK5hAQlUk5d58kYbrpPtlmt7wK_j",
-    "https://lh3.googleusercontent.com/aida-public/AB6AXuCNymMN2CULOu5y-kvXdid55o04grP6HQ_-5hGBUExY6AZ6Y6ztJP4GEPTVRbKvkoatYN1dj7ZkNM3mhxD9ZsO4mTaUUW9h-XBRqqgKu5CGotvDVoiO_Mwe9-oRVdY_F-iTFiO-d7Vhy6azHas15vtoXgjTbHi_XpX5uLgm9eYnzJr3fJkUf9HYi_Pbhp7eFRaYCkSigU3Q4reGfPnayzpmkIs1E20I-3nOvyty6gmP3A8rsTsFbLRmJ9ZRRLz6qfi9QWG2Mfv1Upsgx",
+    "https://images.unsplash.com/photo-1621905252507-b35492cc74b4?w=600&h=600&fit=crop",
+    "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=600&h=600&fit=crop",
   ];
 
   return (

@@ -28,16 +28,16 @@ export default function HvacNav({ businessName = "ComfortPro HVAC", phone = "(55
         {/* Logo */}
         <a
           href="#"
-          className="flex items-center gap-2 text-xl font-extrabold text-[#a13b05]"
+          className="flex items-center gap-2 font-extrabold text-[#a13b05] min-w-0 shrink-0 max-w-[280px] lg:max-w-[320px]"
           style={{ fontFamily: "var(--font-manrope)" }}
         >
           <span
-            className="material-symbols-outlined text-[#a13b05]"
+            className="material-symbols-outlined text-[#a13b05] shrink-0"
             style={{ fontVariationSettings: "'FILL' 1", fontSize: "28px" }}
           >
             local_fire_department
           </span>
-          {businessName}
+          <span className=" text-lg lg:text-xl leading-tight">{businessName}</span>
         </a>
 
         {/* Desktop Links */}
@@ -76,16 +76,7 @@ export default function HvacNav({ businessName = "ComfortPro HVAC", phone = "(55
               </span>
               <span className="text-sm">{phone}</span>
             </div>
-            <button
-              className="text-white px-6 py-3 rounded-full text-xs font-bold tracking-wider hover:scale-105 transition-transform"
-              style={{
-                fontFamily: "var(--font-manrope)",
-                background: "linear-gradient(135deg, #a13b05, #c1521f)",
-                boxShadow: "0 4px 24px rgba(161,59,5,0.15)",
-              }}
-            >
-              Emergency Service
-            </button>
+    
           </div>
         </div>
 
@@ -129,15 +120,7 @@ export default function HvacNav({ businessName = "ComfortPro HVAC", phone = "(55
             </span>
             <span>{phone}</span>
           </div>
-          <button
-            className="w-full mt-2 text-white px-6 py-3 rounded-full text-xs font-bold tracking-wider"
-            style={{
-              fontFamily: "var(--font-manrope)",
-              background: "linear-gradient(135deg, #a13b05, #c1521f)",
-            }}
-          >
-            Emergency Service
-          </button>
+      
         </div>
       )}
     </nav>
