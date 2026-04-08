@@ -1,14 +1,16 @@
 import nodemailer from "nodemailer";
 
-const transporter = nodemailer.createTransport({
-  host: process.env.ZOHO_SMTP_HOST || "smtp.zoho.com",
-  port: parseInt(process.env.ZOHO_SMTP_PORT || "465"),
-  secure: true,
-  auth: {
-    user: process.env.ZOHO_EMAIL,
-    pass: process.env.ZOHO_PASSWORD,
-  },
-});
+function createTransporter() {
+  return nodemailer.createTransport({
+    host: process.env.ZOHO_SMTP_HOST || "smtp.zoho.in",
+    port: parseInt(process.env.ZOHO_SMTP_PORT || "465"),
+    secure: true,
+    auth: {
+      user: process.env.ZOHO_EMAIL,
+      pass: process.env.ZOHO_PASSWORD,
+    },
+  });
+}
 
 export async function sendEmail({
   to,
@@ -20,6 +22,7 @@ export async function sendEmail({
   body: string;
 }): Promise<{ success: boolean; error?: string }> {
   try {
+    const transporter = createTransporter();
     await transporter.sendMail({
       from: `"Rakriai" <${process.env.ZOHO_EMAIL}>`,
       to,
